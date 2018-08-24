@@ -2,7 +2,31 @@
 lock "~> 3.11.0"
 
 set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:hssooi/vagrant-rails-tweets.git"
+
+# シンボリックリンクにするディレクトリ
+set :linked_dirs, fetch(:linked_dirs, []).push('log')
+
+# シンボリックリンクを貼るディレクトリ
+#append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/socket', 'public/system', 'public/upload', 'vendor/bundle'
+ 
+# シンボリックリンクを貼るファイル
+#append :linked_files, 'config/database.yml', 'config/master.key'
+
+# デプロイ先でのソースのバージョンの保持数
+set :keep_releases, 5
+# コマンド実行時にsudoをつけるか
+set :use_sudo, false
+
+
+# pumaに関する設定(意味がわかっていない)
+set :puma_threads, [4, 16]
+set :puma_workers, 0
+set :puma_bind, "#{shared_path}/tmp/sockets/puma.sock"
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+set :puma_access_log, "#{shared_path}/log/puma_access.log"
+set :puma_error_log, "#{shared_path}/log/puma_error.log"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

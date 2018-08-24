@@ -1,3 +1,15 @@
+# deploy先のサーバー情報
+role :web, %w{vagrant@192.168.40.15}
+# deployするディレクトリの場所
+set :deploy_to, '/home/vagrant/source'
+
+set :ssh_options, {
+  port: 22,
+  forward_agent: true,
+  # ssh秘密鍵の場所
+  keys: ['~/.ssh/id_rsa']
+}
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

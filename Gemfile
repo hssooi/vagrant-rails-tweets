@@ -49,6 +49,7 @@ group :development do
   gem 'capistrano-bundler' #追加
   gem 'capistrano-rbenv' #追加
   gem 'capistrano-rails' #追加
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do
